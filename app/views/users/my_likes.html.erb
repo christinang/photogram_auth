@@ -10,6 +10,10 @@
       <div class="panel-body">
         <center><a href = "/photos/<%= like.photo.id %>"><img src = "<%= like.photo.image %>" width = "500"></a></center>
         <p><%= like.photo.caption %></p>
+        <% like.photo.comments.each do |comment| %>
+        <p><a href = "/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
+        <p><%= comment.body %></p>
+        <% end %>
     </div>
   </div>
 </div>

@@ -13,6 +13,10 @@
       <div class="panel-body">
         <center><a href = "/photos/<%= photo.id %>"><img src = "<%= photo.image %>" width = "500"></a></center>
         <p><%= photo.caption %></p>
+        <% photo.comments.each do |comment| %>
+        <p><a href = "/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
+        <p><%= comment.body %></p>
+        <% end %>
     </div>
   </div>
 </div>
