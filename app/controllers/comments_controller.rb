@@ -1,3 +1,4 @@
+
 class CommentsController < ApplicationController
   def index
     @comments = Comment.all
@@ -27,9 +28,9 @@ class CommentsController < ApplicationController
     save_status = @comment.save
 
     if save_status == true
-      redirect_to("/comments/#{@comment.id}", :notice => "Comment created successfully.")
+      redirect_to("/photos/#{@comment.photo_id}", :notice => "Comment created successfully.")
     else
-      render("comments/new.html.erb")
+      render("/photos/index.html.erb")
     end
   end
 

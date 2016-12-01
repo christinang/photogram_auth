@@ -1,6 +1,9 @@
+
 Rails.application.routes.draw do
+
+  root "photos#index"
+
   devise_for :users
-  root :to => "photos#index"
 
   # Routes for the User resource:
   # READ

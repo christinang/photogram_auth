@@ -13,10 +13,29 @@
       <div class="panel-body">
         <center><a href = "/photos/<%= photo.id %>"><img src = "<%= photo.image %>" width = "500"></a></center>
         <p><%= photo.caption %></p>
+        <hr>
         <% photo.comments.each do |comment| %>
         <p><a href = "/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
         <p><%= comment.body %></p>
         <% end %>
+        <hr>
+          <form action="/create_comment" method="post">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <!-- Input for photo_id -->
+              <input type="hidden" id="photo_id" name="photo_id" placeholder="Photo" class="form-control" value="<%= photo.id %>">
+
+            <!-- Input for body -->
+              <textarea id="body" name="body" placeholder="Add a comment..." class="form-control" rows="1"></textarea>
+
+            <!-- Input for user_id -->
+              <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+
+            <button class="btn btn-success">
+              Post
+            </button>
+            </form>
     </div>
   </div>
 </div>
